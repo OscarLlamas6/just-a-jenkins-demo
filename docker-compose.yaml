@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile.Jenkins
     ports: 
       - 8080:8080
-      - 2376:2376
+      #- 2376:2376
       - 50000:50000
     environment:
       DOCKER_HOST: tcp://docker:2376
