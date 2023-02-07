@@ -1,0 +1,28 @@
+version: "3.5"
+
+services:
+
+  jenkins-server:
+    container_name: jenkins-server
+    image: myjenkins-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.Jenkins
+    ports: 
+      - 8080:8080
+      - 2376:2376
+      - 50000:50000
+    environment:
+      DOCKER_HOST: tcp://docker:2376
+      DOCKER_CERT_PATH: /certs/client
+      DOCKER_TLS_VERIFY: 1
+    volumes:
+      - ./jenkins-data:/var/jenkins_home
+      - ./jenkins-docker-certs:/certs/client:ro
+    restart: on-failure:3
+    networks:
+      - jenkins_network
+
+networks:
+  jenkins_network:
+    driver: bridge
