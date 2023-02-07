@@ -37,7 +37,7 @@
 > https://localhost:8080/
 ```
 
-## Instalar Jenkins con Docker con Docker Compose
+## Instalar Jenkins con Docker Compose
 
 ```bash
 
